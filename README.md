@@ -14,6 +14,8 @@ So this role includes a script to work around the Fedora issue.
 
 [https://bugzilla.redhat.com/show_bug.cgi?id=1571866](https://bugzilla.redhat.com/show_bug.cgi?id=1571866)
 
+You may notice that atop's strategy to rotate the log file is unsually crude.  It simply restarts the atop service.  This shows up in the atop log file, as a sample with a flashing message "system and process activity since boot", with the "elapsed" time showing time since boot instead of the time since the previous sample.  (E.g., it would nicer if atop could check that the logfile was actually going to be rotated to a new day, before it restarted).
+
 
 ## Requirements
 
