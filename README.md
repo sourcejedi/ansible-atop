@@ -1,6 +1,6 @@
 # sourcejedi.atop #
 
-`atop.service` provides daily logging of system and process activity for analyzing trends.
+The `atop` service provides daily logging of system and process activity for analyzing trends.
 I like having it to log memory usage per process (and system-wide as well).
 
 > https://lwn.net/Articles/387202/
@@ -19,8 +19,8 @@ You may notice that atop's strategy to rotate the log file is unsually crude.  I
 
 ## Requirements
 
-This should work to install and enable `atop.service`, on any distribution that has a package for it.
-But it's probably most useful on Fedora.
+This should work on any distribution that has a package for `atop`.
+However it is probably most useful on Fedora.
 
 
 ## License
