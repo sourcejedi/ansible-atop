@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: atop
   author: Alan Jenkins
   description: Install and enable the atop monitoring service
 
