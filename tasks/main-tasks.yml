@@ -1,13 +1,35 @@
-- name: install atop
+- name: Install atop
   package:
     name: atop
     state: present
 
-- name: enable atop service
+- name: Start atop service
+  service:
+    name: atop
+    state: started
+
+- name: Enable atop service
   service:
     name: atop
     enabled: yes
+
+# atop.service is a hack.
+#
+# If the service is failing during startup, it will probably have failed
+# already now.  That is, there is no benefit to adding an extra delay
+# here, because Ansible is already slow :-D.
+
+- name: Check if atop service has stopped
+  service:
+    name: atop
     state: started
+  check_mode: yes
+  register: atop_service_start
+
+- name: Require that the atop service is still running
+  assert:
+    that: not atop_service_start.changed
+    msg: Check /var/log/atop/daily.log (If it is empty, try 'systemctl status atop')
 
 
 # https://bugzilla.redhat.com/show_bug.cgi?id=1571866

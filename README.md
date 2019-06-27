@@ -23,6 +23,21 @@ This should work on any distribution that has a package for `atop`.
 However it is probably most useful on Fedora.
 
 
+## Status
+
+There is a common issue with atop upgrades.  When you upgrade, the log format may change.  Then when you re-run this role on the same day, you would notice "Start atop service" always appears as "changed".  The service has stopped and logged an error message:
+
+```
+$ cat /var/log/atop/daily.log
+existing file /var/log/atop/atop_20190627 has incompatible header
+(created by version 2.3 - current version 2.4)
+```
+
+The service will start properly if you delete that day's log file.  (Or if you wait until the next day :-).
+
+I have added a little hack to try and detect this.  I try to show a "failed" result, and a message telling you to read the log file.
+
+
 ## License
 
 This role is licensed GPLv3, please open an issue if this creates any problem.
